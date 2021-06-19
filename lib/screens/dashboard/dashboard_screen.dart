@@ -1,12 +1,9 @@
 import 'package:admin/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import 'components/chart.dart';
 import 'components/header.dart';
 import 'components/storage_details.dart';
-import 'components/storage_info_card.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key key}) : super(key: key);
@@ -29,9 +26,30 @@ class DashboardScreen extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 5,
-                  child: Container(
-                    height: 500,
-                    color: Colors.white,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "My Files",
+                            style: Theme.of(context).textTheme.subtitle1,
+                          ),
+                          ElevatedButton.icon(
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: defaultPadding * 1.5,
+                                vertical: defaultPadding
+                              ),
+                            ),
+                            onPressed: () {},
+                            icon: Icon(Icons.add),
+                            label: Text(
+                              "Add New",
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
                 ),
                 SizedBox(

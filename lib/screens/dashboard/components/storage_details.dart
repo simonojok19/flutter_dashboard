@@ -2,6 +2,7 @@ import 'package:admin/screens/dashboard/components/storage_info_card.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
+import 'chart.dart';
 
 class StorageDetail extends StatelessWidget {
   const StorageDetail({
