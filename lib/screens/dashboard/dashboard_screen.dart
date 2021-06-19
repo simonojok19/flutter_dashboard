@@ -19,9 +19,33 @@ class DashboardScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Spacer(),
-                Expanded(
-                  child: SearchField(),
-                ),
+                Expanded(child: SearchField(),),
+                Container(
+                  margin: EdgeInsets.only(left: defaultPadding),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: defaultPadding,
+                    vertical: defaultPadding / 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: secondaryColor,
+                    borderRadius: BorderRadius.all(Radius.circular(10,),),
+                    border: Border.all(
+                      color: Colors.white10,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset("assets/images/profile_pic.png", height: 38,),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: defaultPadding / 2,
+                        ),
+                        child: Text("Abbo Rachael"),
+                      ),
+                      Icon(Icons.keyboard_arrow_down,),
+                    ],
+                  ),
+                )
               ],
             )
           ],
