@@ -13,8 +13,18 @@ class DashboardScreen extends StatelessWidget {
       child: SingleChildScrollView(
         padding: EdgeInsets.all(defaultPadding),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Header()
+            Header(),
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
