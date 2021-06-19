@@ -15,6 +15,7 @@ class DashboardScreen extends StatelessWidget {
       child: SingleChildScrollView(
         padding: EdgeInsets.all(defaultPadding),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Header(),
@@ -22,6 +23,7 @@ class DashboardScreen extends StatelessWidget {
               height: defaultPadding,
             ),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   flex: 5,
@@ -48,6 +50,7 @@ class DashboardScreen extends StatelessWidget {
                       ),
                     ),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Storage Details",
