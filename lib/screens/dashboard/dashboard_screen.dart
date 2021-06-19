@@ -1,11 +1,46 @@
 import 'package:admin/constants.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'components/header.dart';
 
+final sections = [
+  PieChartSectionData(
+    color: primaryColor,
+    value: 25,
+    showTitle: false,
+    radius: 25,
+  ),
+  PieChartSectionData(
+    color: Color(0xff26e5ff),
+    value: 20,
+    showTitle: false,
+    radius: 25,
+  ),
+  PieChartSectionData(
+    color: Color(0xffffcf26),
+    value: 10,
+    showTitle: false,
+    radius: 25,
+  ),
+  PieChartSectionData(
+    color: Color(0xffee2727),
+    value: 15,
+    showTitle: false,
+    radius: 25,
+  ),
+  PieChartSectionData(
+    color: primaryColor.withOpacity(0.1),
+    value: 15,
+    showTitle: false,
+    radius: 25,
+  ),
+];
+
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +86,17 @@ class DashboardScreen extends StatelessWidget {
                         Text(
                           "Storage Details",
                           style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w500),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 200,
+                          child: PieChart(
+                            PieChartData(
+                              sections: sections,
+                            ),
+                          ),
                         ),
                       ],
                     ),
