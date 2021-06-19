@@ -9,58 +9,69 @@ class MainScreen extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: Drawer(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      DrawerHeader(
-                        child: Image.asset("assets/images/logo.png"),
-                      ),
-                      DrawerListTile(
-                        svgSrc: "assets/icons/menu_dashbord.svg",
-                        title: "Dashboard",
-                        onTap: () {},
-                      ),
-                      DrawerListTile(
-                        svgSrc: "assets/icons/menu_tran.svg",
-                        title: "Transaction",
-                        onTap: () {},
-                      ),
-                      DrawerListTile(
-                        svgSrc: "assets/icons/menu_task.svg",
-                        title: "Task",
-                        onTap: () {},
-                      ),
-                      DrawerListTile(
-                        svgSrc: "assets/icons/menu_store.svg",
-                        title: "Store",
-                        onTap: () {},
-                      ),
-                      DrawerListTile(
-                        svgSrc: "assets/icons/menu_notification.svg",
-                        title: "Notification",
-                        onTap: () {},
-                      ),
-                      DrawerListTile(
-                        svgSrc: "assets/icons/menu_profile.svg",
-                        title: "Profile",
-                        onTap: () {},
-                      ),
-                      DrawerListTile(
-                        svgSrc: "assets/icons/menu_setting.svg",
-                        title: "Settings",
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              child: SideMenu(),
             ),
             Expanded(
               flex: 5,
               child: Container(
                 color: Colors.blue,
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SideMenu extends StatelessWidget {
+  const SideMenu({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            DrawerHeader(
+              child: Image.asset("assets/images/logo.png"),
+            ),
+            DrawerListTile(
+              svgSrc: "assets/icons/menu_dashbord.svg",
+              title: "Dashboard",
+              onTap: () {},
+            ),
+            DrawerListTile(
+              svgSrc: "assets/icons/menu_tran.svg",
+              title: "Transaction",
+              onTap: () {},
+            ),
+            DrawerListTile(
+              svgSrc: "assets/icons/menu_task.svg",
+              title: "Task",
+              onTap: () {},
+            ),
+            DrawerListTile(
+              svgSrc: "assets/icons/menu_store.svg",
+              title: "Store",
+              onTap: () {},
+            ),
+            DrawerListTile(
+              svgSrc: "assets/icons/menu_notification.svg",
+              title: "Notification",
+              onTap: () {},
+            ),
+            DrawerListTile(
+              svgSrc: "assets/icons/menu_profile.svg",
+              title: "Profile",
+              onTap: () {},
+            ),
+            DrawerListTile(
+              svgSrc: "assets/icons/menu_setting.svg",
+              title: "Settings",
+              onTap: () {},
             ),
           ],
         ),
