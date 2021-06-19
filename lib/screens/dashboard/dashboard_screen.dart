@@ -41,7 +41,6 @@ final sections = [
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -91,12 +90,11 @@ class DashboardScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
+                          height: defaultPadding,
+                        ),
+                        SizedBox(
                           height: 200,
-                          child: PieChart(
-                            PieChartData(
-                              sections: sections,
-                            ),
-                          ),
+                          child: Chart(),
                         ),
                       ],
                     ),
@@ -107,6 +105,44 @@ class DashboardScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class Chart extends StatelessWidget {
+  const Chart({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        PieChart(
+          PieChartData(
+            sectionsSpace: 0,
+            centerSpaceRadius: 70,
+            startDegreeOffset: -90,
+            sections: sections,
+          ),
+        ),
+        Positioned.fill(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "29.1",
+                style: Theme.of(context).textTheme.headline4.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      height: 0.5,
+                    ),
+              ),
+              Text("of 128GB"),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
