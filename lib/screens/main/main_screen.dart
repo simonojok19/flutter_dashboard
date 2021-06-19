@@ -9,7 +9,7 @@ class MainScreen extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: Container(
+              child: Drawer(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
