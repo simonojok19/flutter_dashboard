@@ -1,8 +1,7 @@
 import 'package:admin/constants.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
+import 'components/chart.dart';
 import 'components/header.dart';
 
 
