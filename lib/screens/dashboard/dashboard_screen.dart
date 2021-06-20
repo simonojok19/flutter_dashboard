@@ -33,6 +33,7 @@ class DashboardScreen extends StatelessWidget {
                 Expanded(
                   flex: 5,
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       MyFiles(),
                       SizedBox(
@@ -47,7 +48,10 @@ class DashboardScreen extends StatelessWidget {
                 ),
                 if (!Responsive.isMobile(context))
                   SizedBox(width: defaultPadding),
-                if (!Responsive.isMobile(context)) StorageDetails()
+                if (!Responsive.isMobile(context))
+                  Expanded(
+                    flex: 2,
+                      child: StorageDetails(),),
               ],
             ),
           ],
