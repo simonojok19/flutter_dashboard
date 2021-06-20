@@ -1,6 +1,8 @@
 import 'package:admin/constants.dart';
+import 'package:admin/models/RecentFile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'components/header.dart';
 import 'components/my_files.dart';
@@ -57,16 +59,27 @@ class DashboardScreen extends StatelessWidget {
                               child: DataTable(
                                 columns: [
                                   DataColumn(
-                                    label: Text("File Name",),
+                                    label: Text(
+                                      "File Name",
+                                    ),
                                   ),
                                   DataColumn(
-                                    label: Text("Date",),
+                                    label: Text(
+                                      "Date",
+                                    ),
                                   ),
                                   DataColumn(
-                                    label: Text("Size",),
+                                    label: Text(
+                                      "Size",
+                                    ),
                                   ),
                                 ],
-                                rows: [],
+                                rows: List.generate(
+                                  demoRecentFiles.length,
+                                  (index) => recentFileDataRow(
+                                    demoRecentFiles[index],
+                                  ),
+                                ),
                               ),
                             ),
                           ],
@@ -87,6 +100,40 @@ class DashboardScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  DataRow recentFileDataRow(RecentFile file) {
+    return DataRow(
+      cells: [
+        DataCell(
+          Row(
+            children: [
+              SvgPicture.asset(
+                file.icon,
+                height: 30,
+                width: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: defaultPadding,
+                ),
+                child: Text(file.title,),
+              ),
+            ],
+          ),
+        ),
+        DataCell(
+          Text(
+            file.date,
+          ),
+        ),
+        DataCell(
+          Text(
+            file.size,
+          ),
+        ),
+      ],
     );
   }
 }
