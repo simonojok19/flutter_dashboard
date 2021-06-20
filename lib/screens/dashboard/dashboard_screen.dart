@@ -25,9 +25,63 @@ class DashboardScreen extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(flex: 5, child: MyFiles(),),
-                SizedBox(width: defaultPadding,),
-                Expanded(flex: 2, child: StorageDetail(),),
+                Expanded(
+                  flex: 5,
+                  child: Column(
+                    children: [
+                      MyFiles(),
+                      SizedBox(
+                        height: defaultPadding,
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(
+                          defaultPadding,
+                        ),
+                        decoration: BoxDecoration(
+                          color: secondaryColor,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(
+                              10,
+                            ),
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Recent Files",
+                              style: Theme.of(context).textTheme.subtitle1,
+                            ),
+                            SizedBox(
+                              width: double.infinity,
+                              child: DataTable(
+                                columns: [
+                                  DataColumn(
+                                    label: Text("File Name",),
+                                  ),
+                                  DataColumn(
+                                    label: Text("Date",),
+                                  ),
+                                  DataColumn(
+                                    label: Text("Size",),
+                                  ),
+                                ],
+                                rows: [],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: defaultPadding,
+                ),
+                Expanded(
+                  flex: 2,
+                  child: StorageDetail(),
+                ),
               ],
             ),
           ],
