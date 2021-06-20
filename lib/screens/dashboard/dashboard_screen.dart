@@ -36,58 +36,7 @@ class DashboardScreen extends StatelessWidget {
                       SizedBox(
                         height: defaultPadding,
                       ),
-                      Container(
-                        padding: EdgeInsets.all(
-                          defaultPadding,
-                        ),
-                        decoration: BoxDecoration(
-                          color: secondaryColor,
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(
-                              10,
-                            ),
-                          ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Recent Files",
-                              style: Theme.of(context).textTheme.subtitle1,
-                            ),
-                            SizedBox(
-                              width: double.infinity,
-                              child: DataTable(
-                                horizontalMargin: 0,
-                                columnSpacing: defaultPadding,
-                                columns: [
-                                  DataColumn(
-                                    label: Text(
-                                      "File Name",
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Text(
-                                      "Date",
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Text(
-                                      "Size",
-                                    ),
-                                  ),
-                                ],
-                                rows: List.generate(
-                                  demoRecentFiles.length,
-                                      (index) => recentFileDataRow(
-                                    demoRecentFiles[index],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      RecentFiles(),
                     ],
                   ),
                 ),
