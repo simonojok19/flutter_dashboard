@@ -29,66 +29,7 @@ class DashboardScreen extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 5,
-                  child: Column(
-                    children: [
-                      MyFiles(),
-                      SizedBox(
-                        height: defaultPadding,
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(
-                          defaultPadding,
-                        ),
-                        decoration: BoxDecoration(
-                          color: secondaryColor,
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(
-                              10,
-                            ),
-                          ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Recent Files",
-                              style: Theme.of(context).textTheme.subtitle1,
-                            ),
-                            SizedBox(
-                              width: double.infinity,
-                              child: DataTable(
-                                horizontalMargin: 0,
-                                columnSpacing: defaultPadding,
-                                columns: [
-                                  DataColumn(
-                                    label: Text(
-                                      "File Name",
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Text(
-                                      "Date",
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Text(
-                                      "Size",
-                                    ),
-                                  ),
-                                ],
-                                rows: List.generate(
-                                  demoRecentFiles.length,
-                                  (index) => recentFileDataRow(
-                                    demoRecentFiles[index],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                  child: RecentFiles(),
                 ),
                 SizedBox(
                   width: defaultPadding,
@@ -104,38 +45,108 @@ class DashboardScreen extends StatelessWidget {
       ),
     );
   }
+}
 
-  DataRow recentFileDataRow(RecentFile file) {
-    return DataRow(
-      cells: [
-        DataCell(
-          Row(
-            children: [
-              SvgPicture.asset(
-                file.icon,
-                height: 30,
-                width: 30,
+class RecentFiles extends StatelessWidget {
+  const RecentFiles({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        MyFiles(),
+        SizedBox(
+          height: defaultPadding,
+        ),
+        Container(
+          padding: EdgeInsets.all(
+            defaultPadding,
+          ),
+          decoration: BoxDecoration(
+            color: secondaryColor,
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                10,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: defaultPadding,
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Recent Files",
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: DataTable(
+                  horizontalMargin: 0,
+                  columnSpacing: defaultPadding,
+                  columns: [
+                    DataColumn(
+                      label: Text(
+                        "File Name",
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        "Date",
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        "Size",
+                      ),
+                    ),
+                  ],
+                  rows: List.generate(
+                    demoRecentFiles.length,
+                    (index) => recentFileDataRow(
+                      demoRecentFiles[index],
+                    ),
+                  ),
                 ),
-                child: Text(file.title,),
               ),
             ],
-          ),
-        ),
-        DataCell(
-          Text(
-            file.date,
-          ),
-        ),
-        DataCell(
-          Text(
-            file.size,
           ),
         ),
       ],
     );
   }
+}
+
+DataRow recentFileDataRow(RecentFile file) {
+  return DataRow(
+    cells: [
+      DataCell(
+        Row(
+          children: [
+            SvgPicture.asset(
+              file.icon,
+              height: 30,
+              width: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: defaultPadding,
+              ),
+              child: Text(file.title,),
+            ),
+          ],
+        ),
+      ),
+      DataCell(
+        Text(
+          file.date,
+        ),
+      ),
+      DataCell(
+        Text(
+          file.size,
+        ),
+      ),
+    ],
+  );
 }
