@@ -1,4 +1,5 @@
 import 'package:admin/constants.dart';
+import 'package:admin/responsive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -29,13 +30,19 @@ class DashboardScreen extends StatelessWidget {
                   flex: 5,
                   child: RecentFiles(),
                 ),
-                SizedBox(
-                  width: defaultPadding,
-                ),
-                Expanded(
-                  flex: 2,
-                  child: StorageDetail(),
-                ),
+                if (!Responsive.isMobile(
+                  context,
+                ))
+                  SizedBox(
+                    width: defaultPadding,
+                  ),
+                if (!Responsive.isMobile(
+                  context,
+                ))
+                  Expanded(
+                    flex: 2,
+                    child: StorageDetail(),
+                  ),
               ],
             ),
           ],
