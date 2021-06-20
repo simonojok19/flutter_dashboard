@@ -68,12 +68,13 @@ class ProfileCard extends StatelessWidget {
             "assets/images/profile_pic.png",
             height: 38,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: defaultPadding / 2,
+          if (!Responsive.isMobile(context))
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: defaultPadding / 2,
+              ),
+              child: Text("Abbo Rachael"),
             ),
-            child: Text("Abbo Rachael"),
-          ),
           Icon(
             Icons.keyboard_arrow_down,
           ),
