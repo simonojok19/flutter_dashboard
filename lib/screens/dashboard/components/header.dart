@@ -1,3 +1,4 @@
+import 'package:admin/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -12,12 +13,23 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
-          "Dashboard",
-          style: Theme.of(context).textTheme.headline6,
+        if (!Responsive.isDesktop(context))
+          IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {},
+          ),
+        if (!Responsive.isMobile(context))
+          Text(
+            "Dashboard",
+            style: Theme.of(context).textTheme.headline6,
+          ),
+        if (!Responsive.isMobile(context))
+          Spacer(
+            flex: Responsive.isDesktop(context) ? 2 : 1,
+          ),
+        Expanded(
+          child: SearchField(),
         ),
-        Spacer(flex: 2,),
-        Expanded(child: SearchField(),),
         ProfileCard(),
       ],
     );
@@ -39,21 +51,30 @@ class ProfileCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: secondaryColor,
-        borderRadius: BorderRadius.all(Radius.circular(10,),),
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            10,
+          ),
+        ),
         border: Border.all(
           color: Colors.white10,
         ),
       ),
       child: Row(
         children: [
-          Image.asset("assets/images/profile_pic.png", height: 38,),
+          Image.asset(
+            "assets/images/profile_pic.png",
+            height: 38,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: defaultPadding / 2,
             ),
             child: Text("Abbo Rachael"),
           ),
-          Icon(Icons.keyboard_arrow_down,),
+          Icon(
+            Icons.keyboard_arrow_down,
+          ),
         ],
       ),
     );
