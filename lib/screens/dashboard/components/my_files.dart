@@ -21,9 +21,7 @@ class MyFiles extends StatelessWidget {
             ElevatedButton.icon(
               style: TextButton.styleFrom(
                 padding: EdgeInsets.symmetric(
-                    horizontal: defaultPadding * 1.5,
-                    vertical: defaultPadding
-                ),
+                    horizontal: defaultPadding * 1.5, vertical: defaultPadding),
               ),
               onPressed: () {},
               icon: Icon(Icons.add),
@@ -32,7 +30,21 @@ class MyFiles extends StatelessWidget {
               ),
             ),
           ],
-        )
+        ),
+        SizedBox(
+          height: defaultPadding,
+        ),
+        GridView.builder(
+          shrinkWrap: true,
+          itemCount: 4,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            crossAxisSpacing: defaultPadding,
+          ),
+          itemBuilder: (context, index) => Container(
+            decoration: BoxDecoration(color: secondaryColor),
+          ),
+        ),
       ],
     );
   }
