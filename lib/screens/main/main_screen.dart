@@ -1,3 +1,4 @@
+import 'package:admin/responsive.dart';
 import 'package:admin/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -10,9 +11,12 @@ class MainScreen extends StatelessWidget {
       body: SafeArea(
         child: Row(
           children: [
-            Expanded(
-              child: SideMenu(),
-            ),
+            if (Responsive.isDesktop(
+              context,
+            ))
+              Expanded(
+                child: SideMenu(),
+              ),
             Expanded(
               flex: 5,
               child: DashboardScreen(),

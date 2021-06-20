@@ -38,19 +38,33 @@ class MyFiles extends StatelessWidget {
         SizedBox(
           height: defaultPadding,
         ),
-        GridView.builder(
-          shrinkWrap: true,
-          itemCount: demoMyFiels.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            crossAxisSpacing: defaultPadding,
-            childAspectRatio: 1.4
-          ),
-          itemBuilder: (context, index) => FileInfoCard(
-            info: demoMyFiels[index],
-          ),
-        ),
+        FileInfoCardGridView(),
       ],
+    );
+  }
+}
+
+class FileInfoCardGridView extends StatelessWidget {
+  const FileInfoCardGridView({
+    Key key, this.crossAxisCount = 4, this.childAspectRatio = 1.4,
+  }) : super(key: key);
+
+  final int crossAxisCount;
+  final double childAspectRatio;
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      shrinkWrap: true,
+      itemCount: demoMyFiels.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        crossAxisSpacing: defaultPadding,
+        childAspectRatio: childAspectRatio
+      ),
+      itemBuilder: (context, index) => FileInfoCard(
+        info: demoMyFiels[index],
+      ),
     );
   }
 }
