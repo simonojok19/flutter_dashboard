@@ -4,10 +4,12 @@ import 'package:admin/responsive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'components/chart.dart';
 import 'components/header.dart';
 import 'components/my_files.dart';
 import 'components/rescent_files.dart';
 import 'components/storage_details.dart';
+import 'components/storage_info_card.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key key}) : super(key: key);
@@ -37,6 +39,10 @@ class DashboardScreen extends StatelessWidget {
                         height: defaultPadding,
                       ),
                       RecentFiles(),
+                      if (Responsive.isMobile(context))
+                        SizedBox(width: defaultPadding),
+                      if (Responsive.isMobile(context))
+                        StorageDetails(),
                     ],
                   ),
                 ),
@@ -51,7 +57,7 @@ class DashboardScreen extends StatelessWidget {
                 ))
                   Expanded(
                     flex: 2,
-                    child: StorageDetail(),
+                    child: StorageDetails(),
                   ),
               ],
             ),
