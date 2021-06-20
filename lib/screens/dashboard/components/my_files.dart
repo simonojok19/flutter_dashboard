@@ -1,4 +1,5 @@
 import 'package:admin/models/MyFiles.dart';
+import 'package:admin/responsive.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,6 +14,7 @@ class MyFiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Column(
       children: [
         Row(
@@ -38,7 +40,13 @@ class MyFiles extends StatelessWidget {
         SizedBox(
           height: defaultPadding,
         ),
-        FileInfoCardGridView(),
+        Responsive(
+          mobile: FileInfoCardGridView(),
+          desktop: FileInfoCardGridView(
+            childAspectRatio: size.width < 1400 ? 1.1 : 1.4,
+          ),
+          tablet: FileInfoCardGridView(),
+        ),
       ],
     );
   }
@@ -46,7 +54,9 @@ class MyFiles extends StatelessWidget {
 
 class FileInfoCardGridView extends StatelessWidget {
   const FileInfoCardGridView({
-    Key key, this.crossAxisCount = 4, this.childAspectRatio = 1.4,
+    Key key,
+    this.crossAxisCount = 4,
+    this.childAspectRatio = 1,
   }) : super(key: key);
 
   final int crossAxisCount;
@@ -58,10 +68,9 @@ class FileInfoCardGridView extends StatelessWidget {
       shrinkWrap: true,
       itemCount: demoMyFiels.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: crossAxisCount,
-        crossAxisSpacing: defaultPadding,
-        childAspectRatio: childAspectRatio
-      ),
+          crossAxisCount: crossAxisCount,
+          crossAxisSpacing: defaultPadding,
+          childAspectRatio: childAspectRatio),
       itemBuilder: (context, index) => FileInfoCard(
         info: demoMyFiels[index],
       ),
