@@ -57,6 +57,8 @@ class DashboardScreen extends StatelessWidget {
                             SizedBox(
                               width: double.infinity,
                               child: DataTable(
+                                horizontalMargin: 0,
+                                columnSpacing: defaultPadding,
                                 columns: [
                                   DataColumn(
                                     label: Text(
