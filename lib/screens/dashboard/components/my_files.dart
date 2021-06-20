@@ -76,6 +76,7 @@ class FileInfoCard extends StatelessWidget {
           Row(
             children: [
               Container(
+                padding: EdgeInsets.all(defaultPadding * 0.75,),
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(
@@ -91,6 +92,7 @@ class FileInfoCard extends StatelessWidget {
                   color: info.color,
                 ),
               ),
+              Icon(Icons.more, color: Colors.white54,)
             ],
           )
         ],
